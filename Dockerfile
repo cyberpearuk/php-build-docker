@@ -6,8 +6,10 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	curl \
 	git \
-        php7.2 php7.2-xml \
+        php7.2 php7.2-xml php7.2-curl \
     && rm -rf /var/lib/apt/lists/*
+
+ADD phplint.sh /usr/bin/phplint
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
