@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	curl \
 	git \
-        php7.2 php7.2-xml php7.2-curl \
+        php7.2 php7.2-xml php7.2-curl  php7.2-zip \
     && rm -rf /var/lib/apt/lists/*
 
 ADD phplint.sh /usr/bin/phplint
