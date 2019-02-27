@@ -13,5 +13,8 @@ ADD phplint.sh /usr/bin/phplint
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Add nexus publisher
+RUN composer global require codercms/nexus-composer-push dev-master
+
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
