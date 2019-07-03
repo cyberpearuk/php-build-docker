@@ -4,11 +4,11 @@ services:
   - docker
 
 script:
-    - bash build.sh $TRAVIS_REPO_SLUG 2
+    - bash build.sh $TRAVIS_REPO_SLUG latest
 
 deploy:
     provider: script
     script:
-        - bash deploy.sh $TRAVIS_REPO_SLUG 2
+        - bash deploy.sh $TRAVIS_REPO_SLUG latest
     on:
         branch: master
