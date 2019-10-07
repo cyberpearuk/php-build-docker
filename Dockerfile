@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer global require codercms/nexus-composer-push dev-master \
+    && composer global require elendev/nexus-composer-push dev-master \
     && composer global require phpunit/phpunit \
     && composer global require phpunit/php-code-coverage \
     && composer global require squizlabs/php_codesniffer \
