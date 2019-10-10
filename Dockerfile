@@ -28,7 +28,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
         overtrue/phplint \
         phan/phan
 
-ENV PATH=$PATH:/root/.composer/vendor/bin
+ENV PATH=$PATH:/root/.composer/vendor/bin PHAN_DISABLE_XDEBUG_WARN=1
 
 CMD php
 
