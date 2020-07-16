@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	curl \
 	git \
+	subversion \
         php${PHPVERSION} php${PHPVERSION}-xml php${PHPVERSION}-curl php${PHPVERSION}-zip php${PHPVERSION}-mbstring php${PHPVERSION}-dev php${PHPVERSION}-xdebug \
         libmagickwand-dev php-imagick \
     && rm -rf /var/lib/apt/lists/*
