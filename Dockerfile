@@ -3,13 +3,17 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ARG PHPVERSION=7.4
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y software-properties-common \
+    && add-apt-repository -y ppa:ondrej/php \
+    && apt-get install -y \
 	zip \
 	curl \
 	git \
 	subversion \
         php${PHPVERSION} php${PHPVERSION}-xml php${PHPVERSION}-curl php${PHPVERSION}-zip php${PHPVERSION}-mbstring php${PHPVERSION}-dev php${PHPVERSION}-xdebug \
         libmagickwand-dev php-imagick \
+    && add-apt-repository --remove -y ppa:ondrej/php \
+    && apt-get remove -y software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
 #RUN apt-get update && apt-get install -y php-dev
@@ -31,7 +35,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
         overtrue/phplint \
         phan/phan
 
-ENV PATH=$PATH:/root/.composer/vendor/bin PHAN_DISABLE_XDEBUG_WARN=1
+ENV PATH=$PATH:/root/.config/composer/vendor/bin PHAN_DISABLE_XDEBUG_WARN=1
 
 CMD php
 

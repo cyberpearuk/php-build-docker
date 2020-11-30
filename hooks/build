@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+if [ "$DOCKER_TAG" == "latest" ] ; then 
+    docker build --build-arg PHPVERSION=7.4 -t $DOCKER_REPO:7.4 .
+    docker build --build-arg PHPVERSION=8.0 -t $DOCKER_REPO:8.0 .
+    
+    # Set latest
+    docker tag $DOCKER_REPO:7.4 $DOCKER_REPO:latest
+else
+    docker build --build-arg PHPVERSION=7.4 -t $DOCKER_REPO:$DOCKER_TAG-7.4 .
+    docker build --build-arg PHPVERSION=8.0 -t $DOCKER_REPO::$DOCKER_TAG-8.0 .
+
+    # Set latest
+    docker tag $DOCKER_REPO:$DOCKER_TAG-7.4 $DOCKER_REPO:$DOCKER_TAG
+fi
+
