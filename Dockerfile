@@ -28,6 +28,7 @@ RUN git clone https://github.com/nikic/php-ast.git \
     && echo "extension=ast.so" > /etc/php/${PHPVERSION}/cli/conf.d/20-ast.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer self-update 1.10.16 \
     && composer global require \
         phpunit/phpunit \
         phpunit/php-code-coverage \
