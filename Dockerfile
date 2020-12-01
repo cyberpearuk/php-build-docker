@@ -37,6 +37,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
         phan/phan
 
 ENV PATH=$PATH:/root/.config/composer/vendor/bin PHAN_DISABLE_XDEBUG_WARN=1
+# Temporarily support legacy path
+ENV PATH=$PATH:/root/.composer/vendor/bin PHAN_DISABLE_XDEBUG_WARN=1
 
 CMD php
 
